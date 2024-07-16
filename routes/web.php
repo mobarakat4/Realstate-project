@@ -31,6 +31,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::middleware(['auth','role:admin'])->group(function(){
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/agent/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
+});
+Route::middleware(['auth','role:agent'])->group(function(){
+
+    Route::get('/agent/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
+});
