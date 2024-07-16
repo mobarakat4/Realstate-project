@@ -28,8 +28,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $url = "";
+        $role = $request->user()->role;
+        // MULTI AUTH FOR (admin , user ,agent)
+        if($role === "user"){
+            $url = RouteServiceProvider::HOME;
+        }elseif($role === "admin"){
+            $url = RouteServiceProvider::ADMIN;
+        }elseif($role==="agent"){
+            $url = RouteServiceProvider::AGENT;
+        }
+        return redirect()->intended($url);
     }
 
     /**
