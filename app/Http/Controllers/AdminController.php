@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     //
     public function dashboard(){
-        dd(auth()->user());
+        
         return view("admin.dashboard");
     }
 }
