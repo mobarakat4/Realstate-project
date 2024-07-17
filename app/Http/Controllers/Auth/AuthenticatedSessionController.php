@@ -29,7 +29,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         $url = "";
-        $role = $request->user()->role;
+        // dd($request->user);
+        $role = $request->user->role;
         // MULTI AUTH FOR (admin , user ,agent)
         if($role === "user"){
             $url = RouteServiceProvider::HOME;

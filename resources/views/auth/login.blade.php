@@ -8,7 +8,7 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email/Phone')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="string" name="login" :value="old('login')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type='text' name="login" :value="old('login')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 

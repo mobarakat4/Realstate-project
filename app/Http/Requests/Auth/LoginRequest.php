@@ -15,6 +15,7 @@ class LoginRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
+    public $user ;
     public function authorize(): bool
     {
         return true;
@@ -41,7 +42,8 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-        $user = User::where('login', $this->email)->orwhere('login', $this->phone)->first();
+        $user = User::where('email', $this->login)->orwhere('phone', $this->login)->first();
+        $this->user = $user;
         if (!($user && Hash::check($this->password, $user->password))) {
             RateLimiter::hit($this->throttleKey());
 
@@ -49,7 +51,7 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
-
+        Auth::login($user);
         RateLimiter::clear($this->throttleKey());
     }
 
