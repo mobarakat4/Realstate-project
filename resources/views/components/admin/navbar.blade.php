@@ -18,7 +18,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
     <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-us" title="us" id="us"></i> <span class="ms-1"> English </span></a>
-    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-fr" title="ar" id="ar"></i> <span class="ms-1"> arabic </span></a>
+    <a href="javascript:;" class="dropdown-item py-2"><i class="flag-icon flag-icon-eg" title="ar" id="ar"></i> <span class="ms-1"> arabic </span></a>
                 </div>
     </li>
             <li class="nav-item dropdown">
@@ -205,7 +205,7 @@
                     </div>
     <ul class="list-unstyled p-1">
       <li class="dropdown-item py-2">
-        <a href="pages/general/profile.html" class="text-body ms-0">
+        <a href="{{route('admin.profile')}}" class="text-body ms-0">
           <i class="me-2 icon-md" data-feather="user"></i>
           <span>Profile</span>
         </a>

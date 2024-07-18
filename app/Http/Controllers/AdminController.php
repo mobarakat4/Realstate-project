@@ -12,6 +12,10 @@ class AdminController extends Controller
 
         return view("admin.dashboard");
     }
+    public function profile(){
+        $user  = auth()->user();
+        return view('admin.profile',compact('user'));
+    }
     public function login(){
         return  view('admin.login');
     }
