@@ -29,6 +29,7 @@
 
   <!-- Layout styles -->
     @if(session()->has('light'))
+
     <link rel="stylesheet" href="{{asset('assets/css/demo1/style.css')}}">
     @else
 	<link rel="stylesheet" href="{{asset('assets/css/demo2/style.css')}}">

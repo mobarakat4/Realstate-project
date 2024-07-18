@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\ThemeContoller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfile;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,10 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
-    Route::get('/admin/profile',[AdminController::class,'profile'])->name('admin.profile');
+
+    // profile
+    Route::get('/admin/profile',[AdminProfile::class,'index'])->name('admin.profile');
+    Route::post('admin/profile/update',[AdminProfile::class,'update'])->name('admin.profile.update');
     // change theme
     Route::get('/theme/light',[ThemeContoller::class,'light'])->name('theme.light');
     Route::get('/theme/dark',[ThemeContoller::class,'dark'])->name('theme.dark');
