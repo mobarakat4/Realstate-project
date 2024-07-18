@@ -89,10 +89,10 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Image</label>
-                                    <input type="file" class="form-control" name="photo" id="exampleInputPassword1" autocomplete="off" placeholder="Password">
+                                    <input type="file" class="form-control" name="photo" id="uimage" autocomplete="off" placeholder="Password">
                                 </div>
                                 <div class="mb-3">
-                                    <img class="wd-60 rounded-circle" src="{{!(empty($user->photo)) ? url("storage/images/admins/"."$user->photo") : url("images/admins/no_image.jpg")}}" alt="profile image">
+                                    <img width="100" height="100" class=" rounded-circle" id="simage" src="{{!(empty($user->photo)) ? url("storage/images/admins/"."$user->photo") : url("images/admins/no_image.jpg")}}" alt="profile image">
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                                 <button  class="btn btn-secondary">Cancel</button>
@@ -105,4 +105,13 @@
     </div>
 
         </div>
+@endsection
+@section('js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#uimage').on('change', function(e){
+            $('#simage').attr('src', URL.createObjectURL(e.target.files[0]));
+        });
+    });
+</script>
 @endsection
