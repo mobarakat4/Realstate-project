@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ThemeContoller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     Route::get('/admin/profile',[AdminController::class,'profile'])->name('admin.profile');
+    // change theme
+    Route::get('/theme/light',[ThemeContoller::class,'light'])->name('theme.light');
+    Route::get('/theme/dark',[ThemeContoller::class,'dark'])->name('theme.dark');
 });
 //
 Route::middleware('guest')->group(function(){
@@ -45,3 +49,4 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
     Route::get('/agent/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
 });
+
