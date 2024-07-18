@@ -29,10 +29,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+//admin
 require __DIR__.'/auth.php';
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
+});
+//
+Route::middleware('guest')->group(function(){
+    Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 });
 Route::middleware(['auth','role:agent'])->group(function(){
