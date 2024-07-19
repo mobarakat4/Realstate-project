@@ -62,17 +62,23 @@
         <div class="card">
           <div class="card-body">
 
-                            <h6 class="card-title">Profile</h6>
+                            <h6 class="card-title">Change Password</h6>
 
                             <form class="forms-sample" method="POST" action="{{route('admin.password.update')}} ">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">Old Password</label>
                                     <input type="password" class="form-control" name="old_password"  autocomplete="off" placeholder="Enter old password">
+                                    @error('old_password')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">New Password</label>
                                     <input type="password" class="form-control" name="password"  autocomplete="off" placeholder="Enter new password">
+                                    @error('password')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">Confirm New Password</label>
@@ -82,15 +88,6 @@
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                                 <button  class="btn btn-secondary">Cancel</button>
                             </form>
-                            @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
 
           </div>

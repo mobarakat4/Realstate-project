@@ -46,7 +46,7 @@ class ProfileController extends Controller
         $user  = auth()->user();
         if($user && Hash::check($request->old_password,$user->password)){
             $user->password = Hash::make($request->password);
-            $user->save;
+            $user->save();
             $arr = [
                 'message'=> "Password Updated successfully",
                 'alert_type'=>'success'

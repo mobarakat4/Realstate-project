@@ -62,34 +62,52 @@
         <div class="card">
           <div class="card-body">
 
-                            <h6 class="card-title">Basic Form</h6>
+                            <h6 class="card-title">Profile</h6>
 
                             <form class="forms-sample" method="POST" action="{{route('admin.profile.update')}} " enctype='multipart/form-data'>
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">name</label>
                                     <input type="text" class="form-control" value="{{$user->name}}" name="name" id="exampleInputUsername1" autocomplete="off" placeholder="Name">
+                                    @error('name')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">Username</label>
                                     <input type="text" class="form-control" value="{{$user->username}}" name="username" id="exampleInputUsername1" autocomplete="off" placeholder="Username">
+                                    @error('username')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">address</label>
                                     <input type="text" class="form-control" value="{{$user->address}}" name="address" id="exampleInputUsername1" autocomplete="off" placeholder="address">
+                                    @error('address')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">phone</label>
                                     <input type="text" class="form-control" value="{{$user->phone}}" name="phone" id="exampleInputUsername1" autocomplete="off" placeholder="Phone">
+                                    @error('phone')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email</label>
                                     <input type="email" class="form-control" name="email" value="{{$user->email}}" id="exampleInputEmail1" placeholder="Email">
+                                    @error('email')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Image</label>
                                     <input type="file" class="form-control" name="photo" id="uimage" autocomplete="off" placeholder="Password">
+                                    @error('photo')
+                                        <div class="alert alert-danger"> {{$message}} </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <img width="100" height="100" class=" rounded-circle" id="simage" src="{{!(empty($user->photo)) ? url("storage/images/admins/"."$user->photo") : url("images/admins/no_image.jpg")}}" alt="profile image">
