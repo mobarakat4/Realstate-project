@@ -41,6 +41,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
     // profile
     Route::get('/admin/profile',[AdminProfile::class,'index'])->name('admin.profile');
     Route::post('admin/profile/update',[AdminProfile::class,'update'])->name('admin.profile.update');
+    Route::get('admin/password/update',[AdminProfile::class,'viewChangePassword'])->name('admin.password.change');
+    Route::post('admin/password/update',[AdminProfile::class,'changePassword'])->name('admin.password.update');
     // change theme
     Route::get('/theme/light',[ThemeContoller::class,'light'])->name('theme.light');
     Route::get('/theme/dark',[ThemeContoller::class,'dark'])->name('theme.dark');
