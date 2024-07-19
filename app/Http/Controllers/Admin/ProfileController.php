@@ -31,6 +31,9 @@ class ProfileController extends Controller
             $user->save();
 
         }
-        return redirect()->back();
+        return redirect()->back()->with([
+            'message'=> "Profile Updated successfully",
+            'alert_type'=>"success"
+        ]);
     }
 }
